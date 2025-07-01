@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+            flex-wrap: wrap;
+            max-width: 90%;
+        }
+        
+        .gallery div {
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Galería de imágenes</h1>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <input type="text" id="imageUrl" placeholder="URL de la imagen">
+        <input type="text" id="imageDescription" placeholder="Descripción de la imagen">
+        <button onclick="addImage()">Añadir imagen</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+        <div>
+            <img src="imgs/bird.jpg" alt="Imagen 1" style="width: 300px; height: 250px;">
+            <p>Little bird</p>
+        </div>
+        <div>
+            <img src="imgs/cat.jpg" alt="Imagen 2" style="width: 300px; height: 250px;">
+            <p>Cat</p>
+        </div>
+        <div>
+            <img src="imgs/fisher-bird.jpg" alt="Imagen 3" style="width: 300px; height: 250px;">
+            <p>Fisher bird</p>
+        </div>
+        <div>
+            <img src="imgs/shark.jpg" alt="Imagen 4" style="width: 300px; height: 250px;">
+            <p>Shark</p>
+        </div>
+    </div>
+
+    <script>
+        function addImage(){
+            const imageUrl = document.getElementById('imageUrl').value;
+            const imageDescription = document.getElementById('imageDescription').value;
+
+            if (imageUrl && imageDescription) {
+                const gallery = document.getElementById("gallery");
+                const newDiv = document.createElement('div');
+                newDiv.innerHTML = `<img src="${imageUrl}" alt="${imageDescription}" style="width: 300px; height: 250px;">
+                                    <p>${imageDescription}</p>`;
+                gallery.appendChild(newDiv);
+
+                // Clear input fields
+                document.getElementById('imageUrl').value = '';
+                document.getElementById('imageDescription').value = '';
+            } else {
+                alert('Por favor, completa ambos campos.');
+            }
+        }
+    </script>
+</body>
+</html>

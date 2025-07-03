@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-
+import backgroundImage from './assets/elephants.jpg';
 import './App.css';
 
 function App() {
@@ -9,13 +9,19 @@ function App() {
 
   function calculate() {
     const euros = eurosRef.current.value;
-    const dollars = (euros * 1.18).toFixed(2) + "$"; // Assuming 1 Euro = 1.18 Dollars
+    const dollars = (euros * 1.18).toFixed(2) + "$"; // 1 Euro = 1.18 Dollars at the time of writing
     resultRef.current.innerHTML = dollars;
   }
 
 
   return (
-    <div className='center'>
+    <div className='center' style={{ 
+        height: '100vh',
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat'
+      }}>
       <h1>Euro to Dollar Converter</h1>
       <div>
         <input type="number" ref={eurosRef} placeholder="Enter amount in Euros" />

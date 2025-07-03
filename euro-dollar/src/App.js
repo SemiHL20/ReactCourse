@@ -1,15 +1,39 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import backgroundImage from './assets/elephants.jpg';
 import './App.css';
 
 function App() {
 
+  const [valorCambio, setValorCambio] = useState(null); 
   const eurosRef = useRef();
   const resultRef = useRef();
 
+  useEffect(() => {
+    const llamaApi = async () => {
+      try {
+        const response = await fetch('https://v6.exchangerate-api.com/v6/21564fc91e7da60a7154fb2e/latest/EUR');
+        const data = await response.json();
+        console.log(data);
+        setValorCambio(data.conversion_rates.USD);
+      } catch (error) {
+        console.error("Error fetching exchange rate:", error);
+      }
+    }
+    llamaApi();
+  },[]);
+
   function calculate() {
-    const euros = eurosRef.current.value;
-    const dollars = (euros * 1.18).toFixed(2) + "$"; // 1 Euro = 1.18 Dollars at the time of writing
+    const euros = parseFloat(eurosRef.current.value);
+    if (isNaN(euros) || euros <= 0) {
+      resultRef.current.innerHTML = "Please enter a valid amount in Euros.";
+      return;
+    }
+    if (valorCambio === null) {
+      resultRef.current.innerHTML = "Loading exchange rate...";
+      return;
+    }
+
+    const dollars = (euros * valorCambio).toFixed(2) + "$"; 
     resultRef.current.innerHTML = dollars;
   }
 
@@ -28,8 +52,8 @@ function App() {
         <button onClick={calculate}>Convert</button>
       </div>
       <div className="result" ref={resultRef}></div>
-      <p>Exchange rate: 1 Euro = 1.18 Dollars</p>
-      <p>Note: This is a static conversion rate for demonstration purposes.</p>
+      <p>Conversion Rate: 1 Euro = {valorCambio + " USD"}</p>
+      <p>Note: Data retrieved from ExchangeRate-API.</p>
     </div>
   );
 }

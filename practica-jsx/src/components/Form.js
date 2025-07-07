@@ -44,7 +44,8 @@ function Form() {
           <option value='1'>Hotel</option>
           <option value='2'>Coche</option>
         </select>
-        <input className='selector' type='text' placeholder='Introduce el número de días' onChange={(e) => setNumberOfDays(parseInt(e.target.value))} />
+        <input className='selector' type='text' placeholder='Introduce el número de días' 
+          onChange={(e) => setNumberOfDays(parseInt(e.target.value))} />
         <p className='padding'>{resultText}</p>
       </form>
     );

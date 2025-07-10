@@ -8,24 +8,60 @@ export default [
         rutina: [
             {
                 nombre: 'Puente',
-                descripcion: 'Ejercicio para fortalecer los glúteos y la parte baja de la espalda.',
                 imagen: puente,
-                series: 3,
                 repeticiones: 12
             },
             {
                 nombre: 'Laterales',
-                descripcion: 'Ejercicio para trabajar los músculos laterales del cuerpo.',
                 imagen: laterales,
-                series: 3,
                 repeticiones: 15
             },
             {
                 nombre: 'Sentadillas',
-                descripcion: 'Ejercicio para fortalecer las piernas y glúteos.',
                 imagen: sentadillas,
-                series: 4,
                 repeticiones: 10
+            }
+        ]
+    },
+
+    {
+        titulo: "Trabajo 2",
+        rutina: [
+            {
+                nombre: 'Puente 2',
+                imagen: puente,
+                repeticiones: 10
+            },
+            {
+                nombre: 'Laterales 2',
+                imagen: laterales,
+                repeticiones: 12
+            },
+            {
+                nombre: 'Sentadillas 2',
+                imagen: sentadillas,
+                repeticiones: 8
+            }
+        ]
+    },
+
+    {
+        titulo: "Trabajo 3",
+        rutina: [
+            {
+                nombre: 'Puente 3',
+                imagen: puente,
+                repeticiones: 8
+            },
+            {
+                nombre: 'Laterales 3',
+                imagen: laterales,
+                repeticiones: 10
+            },
+            {
+                nombre: 'Sentadillas 3',
+                imagen: sentadillas,
+                repeticiones: 6
             }
         ]
     }

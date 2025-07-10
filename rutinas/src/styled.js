@@ -6,9 +6,14 @@ export const Row = styled.div`
     grid-gap: 10px;
     max-width: 1200px;
     margin: auto;
+
     img{
-        width: 100%;
-        height: 150px;
+        width: auto; /* ocupa el 100% del ancho de la celda */
+        max-width: 300px; /* no más de 150px */
+        height: auto;
+        max-height: 200px;
+        object-fit: contain; /* mantiene la proporción de la imagen */
+        object-position: center; /* centra la imagen */
         cursor: pointer;
         transition: transform 0.3s ease;
     }
@@ -19,15 +24,30 @@ export const Row = styled.div`
 
 export const ImagenSeleccionada = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+
     img {
-        width: 40vw;       /* ocupa el 40% del ancho de la ventana */
-        max-width: 400px;  /* no más de 900px */
-        height: auto; /* mantiene la proporción de la imagen */
-        max-height: 400px;
-        border: 2px solid blue;
-        border-radius: 10px;
+        width: 40vh;        /* ocupa el 40% del ancho de la ventana */
+        max-width: 400px;   /* no más de 900px */
+        height: auto;       /* mantiene la proporción de la imagen */
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    .info h3, .info p {
+        text-align: center;
+        color: #333;
+        margin: 5px 0;
+    }
+
+    .info h3 {
+        font-size: 18px;
+    }
+
+    .info p {
+        font-size: 14px;
     }
 `;
